@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Mishti 💖</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      perspective: 1500px;
+      overflow: hidden;
+      height: 100vh;
+      background: linear-gradient(135deg, #ffd6e8 0%, #ffb3d9 100%);
+    }
+
+    /* ===== BOOK CONTAINER ===== */
+    .book-container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      transform-style: preserve-3d;
+      transition: transform 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    /* ===== COMMON PAGE STYLE ===== */
+    .page {
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      backface-visibility: hidden;
+      overflow: hidden;
+      padding: 20px;
+    }
+
+    /* ===== PAGE 1 ===== */
+    #page1 {
+      background: linear-gradient(135deg, #ffd6e8 0%, #ffb3d9 100%);
+      transform: rotateY(0deg);
+      z-index: 2;
+    }
+
+    .page1-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      max-width: 800px;
+      z-index: 2;
+      position: relative;
+      margin-top: -10px;
+    }
+
+    .birthday-text {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.8rem;
+      color: #ff5c8a;
+      margin-bottom: 15px;
+      text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1);
+      animation: float 3s ease-in-out infinite;
+      position: relative;
+      top: 50px;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .cat-holder {
+      position: relative;
+      width: 220px;
+      height: 220px;
+      margin-bottom: 5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 3;
+      animation: bounce 2s ease-in-out infinite;
+      margin-top: 10px;
+    }
+
+    @keyframes bounce {
+      0%, 100% { 
+        transform: translateY(0) scale(1); 
+      }
+      50% { 
+        transform: translateY(-8px) scale(1.03);
+      }
+    }
+
+    .cat-image {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.2));
+    }
+
+    .birthday-card {
+      background: white;
+      border-radius: 18px;
+      padding: 20px 25px;
+      box-shadow: 0 12px 25px rgba(255, 92, 138, 0.25);
+      margin-top: 5px;
+      border: 2px solid #ff8cb3;
+      transform: rotate(0deg);
+      max-width: 85%;
+      width: 90%;
+      position: relative;
+      z-index: 3;
+    }
+
+    .birthday-card h2 {
+      font-family: 'Dancing Script', cursive;
+      color: #ff5c8a;
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .birthday-card p {
+      color: #666;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      text-align: left;
+      padding: 0 5px;
+    }
+
+    /* ===== NAVIGATION BUTTONS - TOP RIGHT CORNER ===== */
+    .nav-btn {
+      position: absolute;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(135deg, #ff5c8a, #ff8cb3);
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: 0 6px 15px rgba(255, 92, 138, 0.4);
+      transition: all 0.3s ease;
+      z-index: 10;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Next button on page 1 - Top right */
+    .next-btn {
+      top: 20px;
+      right: 20px;
+    }
+
+    .next-btn:hover {
+      transform: scale(1.1) rotate(90deg);
+      box-shadow: 0 10px 20px rgba(255, 92, 138, 0.6);
+    }
+
+    /* Back button on page 2 - Top right */
+    .back-btn {
+      top: 20px;
+      right: 20px;
+    }
+
+    .back-btn:hover {
+      transform: scale(1.1) rotate(-90deg);
+      box-shadow: 0 10px 20px rgba(255, 92, 138, 0.6);
+    }
+
+    /* Music button - Top left */
+    .music-btn {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(135deg, #ff5c8a, #ff8cb3);
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+      box-shadow: 0 5px 12px rgba(255, 92, 138, 0.4);
+      transition: all 0.3s ease;
+      z-index: 10;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .music-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 18px rgba(255, 92, 138, 0.6);
+    }
+
+    /* ===== PAGE 2 ===== */
+    #page2 {
+      background: linear-gradient(135deg, #ffd6e8 0%, #ffb3d9 100%);
+      transform: rotateY(180deg);
+      z-index: 1;
+    }
+
+    .page2-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      width: 100%;
+      position: relative;
+    }
+
+    .page2-title {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.2rem;
+      color: #ff5c8a;
+      text-align: center;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      position: absolute;
+      top: 70px;
+      animation: float 3s ease-in-out infinite;
+      z-index: 3;
+      width: 100%;
+      padding: 0 20px;
+    }
+
+    /* ===== IMAGE CONTAINER ===== */
+    .image-slideshow-container {
+      position: relative;
+      width: 320px;
+      height: 380px;
+      margin-top: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 3;
+    }
+
+    .image-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transform: scale(0.8);
+      animation: imagePopUp 2s ease-out 0.5s forwards;
+      z-index: 2;
+    }
+
+    @keyframes imagePopUp {
+      0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(40px);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    .special-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 18px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      border: 4px solid white;
+      transition: opacity 1.5s ease-in-out;
+    }
+
+    .special-image.fade-out {
+      opacity: 0;
+    }
+
+    .special-image.fade-in {
+      opacity: 1;
+    }
+
+    /* ===== RED HEART BUTTON - MOVED TO BOTTOM CENTER ===== */
+    .heart-slideshow-btn {
+      position: absolute;
+      bottom: -25px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ff3333, #ff6666);
+      color: white;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(255, 51, 51, 0.4);
+      font-size: 22px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 5;
+      transition: all 0.3s ease;
+      animation: heartbeat 2s ease-in-out infinite;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: translateX(-50%) scale(1); }
+      50% { transform: translateX(-50%) scale(1.1); }
+    }
+
+    .heart-slideshow-btn:hover {
+      transform: translateX(-50%) scale(1.2);
+      box-shadow: 0 10px 25px rgba(255, 51, 51, 0.6);
+    }
+
+    .heart-slideshow-btn:active {
+      transform: translateX(-50%) scale(0.95);
+    }
+
+    /* ===== PAGE FLIP ANIMATION ===== */
+    .flip-page {
+      transform: rotateY(-180deg);
+    }
+
+    /* ===== REDUCED FLOATING ELEMENTS ===== */
+    .floating-heart, .floating-bow {
+      position: absolute;
+      pointer-events: none;
+      z-index: 1;
+      font-size: 22px;
+      animation: simpleFloat 20s linear infinite;
+      opacity: 0.6;
+      bottom: -40px;
+    }
+
+    .floating-heart {
+      color: #ff5c8a;
+      filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.2));
+    }
+
+    .floating-bow {
+      color: #ff3333;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    }
+
+    @keyframes simpleFloat {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.7;
+      }
+      90% {
+        opacity: 0.7;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* ===== RESPONSIVE DESIGN ===== */
+    /* Medium Phones */
+    @media (max-width: 480px) {
+      .birthday-text {
+        font-size: 2.5rem;
+        top: 40px;
+        margin-bottom: 10px;
+      }
+      
+      .cat-holder {
+        width: 200px;
+        height: 200px;
+        margin-top: 8px;
+      }
+      
+      .birthday-card {
+        padding: 18px 22px;
+        max-width: 90%;
+        margin-top: 3px;
+      }
+      
+      .birthday-card h2 {
+        font-size: 1.8rem;
+      }
+      
+      .birthday-card p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+      
+      .image-slideshow-container {
+        width: 280px;
+        height: 330px;
+        margin-top: 30px;
+      }
+      
+      .image-container {
+        width: 100%;
+        height: 100%;
+      }
+      
+      .page2-title {
+        font-size: 2rem;
+        top: 60px;
+      }
+      
+      .heart-slideshow-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+        bottom: -20px;
+      }
+      
+      .nav-btn, .music-btn {
+        width: 42px;
+        height: 42px;
+        font-size: 18px;
+      }
+      
+      .floating-heart, .floating-bow {
+        font-size: 20px;
+      }
+    }
+
+    /* Small Phones */
+    @media (max-width: 380px) {
+      .birthday-text {
+        font-size: 2.2rem;
+        top: 35px;
+      }
+      
+      .cat-holder {
+        width: 180px;
+        height: 180px;
+      }
+      
+      .birthday-card {
+        padding: 16px 20px;
+      }
+      
+      .birthday-card h2 {
+        font-size: 1.7rem;
+      }
+      
+      .birthday-card p {
+        font-size: 0.85rem;
+      }
+      
+      .image-slideshow-container {
+        width: 240px;
+        height: 290px;
+        margin-top: 25px;
+      }
+      
+      .page2-title {
+        font-size: 1.8rem;
+        top: 55px;
+      }
+      
+      .heart-slideshow-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+        bottom: -15px;
+      }
+      
+      .nav-btn, .music-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 17px;
+        top: 15px;
+      }
+      
+      .next-btn, .back-btn {
+        right: 15px;
+      }
+      
+      .music-btn {
+        left: 15px;
+      }
+      
+      .floating-heart, .floating-bow {
+        font-size: 18px;
+      }
+    }
+
+    /* Very Small Phones */
+    @media (max-width: 320px) {
+      .birthday-text {
+        font-size: 2rem;
+        top: 30px;
+      }
+      
+      .cat-holder {
+        width: 160px;
+        height: 160px;
+      }
+      
+      .birthday-card {
+        padding: 14px 18px;
+      }
+      
+      .birthday-card h2 {
+        font-size: 1.6rem;
+      }
+      
+      .birthday-card p {
+        font-size: 0.8rem;
+        line-height: 1.4;
+      }
+      
+      .image-slideshow-container {
+        width: 210px;
+        height: 250px;
+        margin-top: 20px;
+      }
+      
+      .page2-title {
+        font-size: 1.6rem;
+        top: 50px;
+      }
+      
+      .heart-slideshow-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+        bottom: -12px;
+      }
+      
+      .nav-btn, .music-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 15px;
+        top: 12px;
+      }
+      
+      .next-btn, .back-btn {
+        right: 12px;
+      }
+      
+      .music-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 15px;
+        left: 12px;
+      }
+    }
+
+    /* Height adjustments for very short screens */
+    @media (max-height: 700px) {
+      .birthday-text {
+        font-size: 2.2rem;
+        top: 30px;
+        margin-bottom: 5px;
+      }
+      
+      .cat-holder {
+        width: 170px;
+        height: 170px;
+        margin-top: 5px;
+      }
+      
+      .birthday-card {
+        padding: 15px 20px;
+        margin-top: 2px;
+      }
+      
+      .page2-title {
+        top: 50px;
+        font-size: 1.9rem;
+      }
+      
+      .image-slideshow-container {
+        margin-top: 25px;
+        height: 280px;
+      }
+      
+      .heart-slideshow-btn {
+        bottom: -18px;
+      }
+      
+      /* Adjust button positions for shorter screens */
+      .nav-btn, .music-btn {
+        top: 15px;
+      }
+    }
+
+    @media (max-height: 600px) {
+      .birthday-text {
+        font-size: 2rem;
+        top: 20px;
+      }
+      
+      .cat-holder {
+        width: 150px;
+        height: 150px;
+      }
+      
+      .birthday-card {
+        padding: 12px 18px;
+      }
+      
+      .birthday-card h2 {
+        font-size: 1.6rem;
+        margin-bottom: 8px;
+      }
+      
+      .birthday-card p {
+        font-size: 0.8rem;
+        line-height: 1.4;
+      }
+      
+      .page2-title {
+        top: 40px;
+        font-size: 1.7rem;
+      }
+      
+      .image-slideshow-container {
+        margin-top: 20px;
+        height: 240px;
+      }
+      
+      .heart-slideshow-btn {
+        width: 38px;
+        height: 38px;
+        bottom: -15px;
+      }
+      
+      .nav-btn, .music-btn {
+        top: 10px;
+      }
+    }
+
+    /* Adjust page2-title to accommodate top buttons */
+    @media (max-height: 650px) {
+      .page2-title {
+        top: 60px;
+        font-size: 1.8rem;
+      }
+    }
+
+    @media (max-height: 550px) {
+      .page2-title {
+        top: 50px;
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ===== BOOK CONTAINER ===== -->
+  <div class="book-container" id="bookContainer">
+    
+    <!-- ===== PAGE 1 ===== -->
+    <div class="page" id="page1">
+      <div class="page1-content">
+        <h1 class="birthday-text">Happy Birthday Mishti! 💖</h1>
+        
+        <div class="cat-holder">
+          <img src="cat.png" alt="Cute Cat" class="cat-image" onerror="this.src='https://cdn-icons-png.flaticon.com/512/1998/1998610.png'">
+        </div>
+        
+        <div class="birthday-card">
+          <h2>To My Special Girl</h2>
+          <p>
+            Thank you for loving me in a way no one else ever has, and for turning my world into something brighter and more beautiful just by being in it.I can't wait to keep choosing you, loving you, and growing with you through every moment ahead. You're the place my heart feels safest, happiest, and most at home. Happy everything,  Mishti. love you the most💕🙇‍♂️
+          </p>
+        </div>
+      </div>
+      
+      <!-- Next button - Top right corner -->
+      <button class="nav-btn next-btn" onclick="goNext()" title="Next page">
+        <i class="fas fa-arrow-right"></i>
+      </button>
+    </div>
+    
+    <!-- ===== PAGE 2 ===== -->
+    <div class="page" id="page2">
+      <!-- Music button - Top left corner -->
+      <button class="music-btn" onclick="toggleMusic()" title="Toggle music">
+        <i class="fas fa-music"></i>
+      </button>
+      
+      <!-- Back button - Top right corner -->
+      <button class="nav-btn back-btn" onclick="goBack()" title="Previous page">
+        <i class="fas fa-arrow-left"></i>
+      </button>
+      
+      <div class="page2-content">
+        <h2 class="page2-title">Thank You for everything 🐨🎀</h2>
+        
+        <div class="image-slideshow-container">
+          <div class="image-container">
+            <img src="photo1.jpg" alt="Special Memory" class="special-image fade-in" id="slideshow-image" onerror="this.src='https://images.unsplash.com/photo-1511988617509-a57c8a288659?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'">
+          </div>
+          
+          <!-- Red heart button for slideshow - Now at bottom center -->
+          <button class="heart-slideshow-btn" onclick="changePhoto()" title="Next photo">
+            <i class="fas fa-heart"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== AUDIO ===== -->
+  <audio id="bg-music" loop>
+    <source src="romantic.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- ===== JAVASCRIPT ===== -->
+  <script>
+    const bookContainer = document.getElementById("bookContainer");
+    const music = document.getElementById("bg-music");
+    let musicPlaying = false;
+    let pageFlipped = false;
+    let heartsInterval;
+    let bowsInterval;
+    
+    // Photo slideshow variables
+    let currentPhotoIndex = 0;
+    const totalPhotos = 10;
+    
+    // Your actual photo filenames - UPDATED WITH YOUR PHOTOS
+    const photoUrls = [
+      'photo1.jpg',    // Photo 1
+      'photo2.jpg',    // Photo 2
+      'photo3.jpg',    // Photo 3
+      'photo4.jpg',    // Photo 4
+      'photo5.jpg',    // Photo 5
+      'photo6.jpg',    // Photo 6
+      'photo7.jpg',    // Photo 7
+      'photo8.jpg',    // Photo 8
+      'photo9.jpg',    // Photo 9
+      'photo10.jpg'    // Photo 10
+    ];
+    
+    // Function to flip the page like a book
+    function goNext() {
+      if (!pageFlipped) {
+        bookContainer.classList.add("flip-page");
+        pageFlipped = true;
+        
+        // Stop hearts animation
+        stopHeartsAnimation();
+        
+        // Start bows animation immediately (with reduced count)
+        setTimeout(() => {
+          startBowsAnimation();
+          playRomanticMusic();
+        }, 100);
+      }
+    }
+    
+    // Function to go back to page 1
+    function goBack() {
+      if (pageFlipped) {
+        bookContainer.classList.remove("flip-page");
+        pageFlipped = false;
+        
+        // Stop bows animation
+        stopBowsAnimation();
+        
+        // Start hearts animation immediately
+        setTimeout(() => {
+          startHeartsAnimation();
+        }, 100);
+      }
+    }
+    
+    // Function to change photo in slideshow
+    function changePhoto() {
+      const slideshowImage = document.getElementById("slideshow-image");
+      
+      // Add fade-out class
+      slideshowImage.classList.remove("fade-in");
+      slideshowImage.classList.add("fade-out");
+      
+      // After fade out, change the image
+      setTimeout(() => {
+        // Move to next photo
+        currentPhotoIndex = (currentPhotoIndex + 1) % totalPhotos;
+        
+        // Update image source - USING YOUR ACTUAL PHOTO FILES
+        slideshowImage.src = photoUrls[currentPhotoIndex];
+        
+        // Set error handler for missing photos
+        slideshowImage.onerror = function() {
+          console.log(`Error loading photo: ${photoUrls[currentPhotoIndex]}`);
+          this.src = 'https://images.unsplash.com/photo-1511988617509-a57c8a288659?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80';
+          this.onerror = null; // Prevent infinite loop
+        };
+        
+        // Remove fade-out and add fade-in
+        setTimeout(() => {
+          slideshowImage.classList.remove("fade-out");
+          slideshowImage.classList.add("fade-in");
+        }, 50);
+        
+      }, 800); // Wait for fade-out to complete
+    }
+    
+    // Function to play romantic music
+    function playRomanticMusic() {
+      if (!musicPlaying) {
+        music.play().then(() => {
+          musicPlaying = true;
+          console.log("Romantic music started playing");
+        }).catch(error => {
+          console.log("Autoplay prevented. Click the music button to play.");
+        });
+      }
+    }
+    
+    // Function to toggle music on/off
+    function toggleMusic() {
+      const musicBtn = document.querySelector(".music-btn i");
+      
+      if (music.paused) {
+        music.play();
+        musicBtn.classList.remove("fa-music");
+        musicBtn.classList.add("fa-pause");
+        musicPlaying = true;
+      } else {
+        music.pause();
+        musicBtn.classList.remove("fa-pause");
+        musicBtn.classList.add("fa-music");
+        musicPlaying = false;
+      }
+    }
+    
+    // Function to create a floating heart
+    function createHeart() {
+      const page1 = document.getElementById("page1");
+      const heart = document.createElement("div");
+      heart.classList.add("floating-heart");
+      heart.innerHTML = "❤️";
+      
+      // Random position
+      const left = Math.random() * 100;
+      heart.style.left = `${left}%`;
+      
+      // Random size (smaller for mobile)
+      const size = Math.random() * 12 + 16;
+      heart.style.fontSize = `${size}px`;
+      
+      // Random animation duration
+      const duration = Math.random() * 10 + 20;
+      heart.style.animationDuration = `${duration}s`;
+      
+      // Random delay
+      const delay = Math.random() * 3;
+      heart.style.animationDelay = `${delay}s`;
+      
+      page1.appendChild(heart);
+      
+      // Remove after animation
+      setTimeout(() => {
+        if (heart.parentNode) {
+          heart.remove();
+        }
+      }, (duration + delay) * 1000);
+    }
+    
+    // Function to create a floating bow
+    function createBow() {
+      const page2 = document.getElementById("page2");
+      const bow = document.createElement("div");
+      bow.classList.add("floating-bow");
+      bow.innerHTML = "🎀";
+      
+      // Random position
+      const left = Math.random() * 100;
+      bow.style.left = `${left}%`;
+      
+      // Random size (smaller for mobile)
+      const size = Math.random() * 12 + 18;
+      bow.style.fontSize = `${size}px`;
+      
+      // Random animation duration
+      const duration = Math.random() * 10 + 25;
+      bow.style.animationDuration = `${duration}s`;
+      
+      // Random delay
+      const delay = Math.random() * 3;
+      bow.style.animationDelay = `${delay}s`;
+      
+      page2.appendChild(bow);
+      
+      // Remove after animation
+      setTimeout(() => {
+        if (bow.parentNode) {
+          bow.remove();
+        }
+      }, (duration + delay) * 1000);
+    }
+    
+    // Function to start hearts animation on page 1
+    function startHeartsAnimation() {
+      // Clear any existing interval
+      if (heartsInterval) {
+        clearInterval(heartsInterval);
+      }
+      
+      // Create initial hearts immediately
+      for (let i = 0; i < 8; i++) {
+        createHeart();
+      }
+      
+      // Create continuous hearts
+      heartsInterval = setInterval(() => {
+        if (!pageFlipped) {
+          createHeart();
+        }
+      }, 1200);
+    }
+    
+    // Function to start bows animation on page 2
+    function startBowsAnimation() {
+      // Clear any existing interval
+      if (bowsInterval) {
+        clearInterval(bowsInterval);
+      }
+      
+      // Create initial bows immediately
+      for (let i = 0; i < 5; i++) {
+        createBow();
+      }
+      
+      // Create continuous bows
+      bowsInterval = setInterval(() => {
+        if (pageFlipped) {
+          createBow();
+        }
+      }, 1500);
+    }
+    
+    // Function to stop hearts animation
+    function stopHeartsAnimation() {
+      if (heartsInterval) {
+        clearInterval(heartsInterval);
+        heartsInterval = null;
+      }
+    }
+    
+    // Function to stop bows animation
+    function stopBowsAnimation() {
+      if (bowsInterval) {
+        clearInterval(bowsInterval);
+        bowsInterval = null;
+      }
+    }
+    
+    // Initialize on page load
+    window.onload = function() {
+      // Start hearts animation immediately
+      startHeartsAnimation();
+      
+      // Check for errors with images
+      const catImage = document.querySelector('.cat-image');
+      catImage.addEventListener('error', function() {
+        console.log('cat.png not found, using fallback image');
+      });
+      
+      const slideshowImage = document.getElementById('slideshow-image');
+      slideshowImage.addEventListener('error', function() {
+        console.log('Initial love.jpg not found, using fallback image');
+      });
+      
+      // Check for music errors
+      music.addEventListener('error', function() {
+        console.log('romantic.mp3 not found.');
+      });
+    };
+  </script>
+</body>
+</html>
